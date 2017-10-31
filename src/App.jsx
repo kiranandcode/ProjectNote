@@ -105,6 +105,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				<h1>Project Note</h1>
+				<Header user={this.state.user}/>
 				<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn}/>
 
 
