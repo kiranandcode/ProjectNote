@@ -42,7 +42,7 @@ module.exports = (env) => {
     app.use(passport.session())
 
 
-    app.use('/auth', require('/auth'));
+    app.use('/auth', require('./auth'));
     app.use('/api', index);
 
     // production step
