@@ -6,11 +6,11 @@ module.exports = (env) => {
     const session = require('express-session');
 
     // authentication packages
-    const passport = require('passport')(env);
+    const passport = require('./passport')(env);
 
     // database packages
     const MongoStore = require('connect-mongo')(session);
-    const dbConnection = require('./db')(env);
+    const dbConnection = (require('./db'))(env);
 
     // logging packages
     const morgan = require('morgan');
