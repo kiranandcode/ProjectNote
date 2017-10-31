@@ -13,7 +13,9 @@ const userSchema = new Schema({
     },
     google: {
         googleId: { type: String, required: false }
-    }
+    },
+    // link to other projects
+    projects: [{type: Schema.Types.ObjectId, ref: 'Project'}]
 });
 
 

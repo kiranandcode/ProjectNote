@@ -25,6 +25,7 @@ module.exports = (env, passport) => {
         }
         next();
     },
+
     passport.authenticate('local'),
      (req,res) => {
          const user  = JSON.parse(JSON.stringify(req.user));

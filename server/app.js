@@ -41,8 +41,10 @@ module.exports = (env) => {
     app.use(passport.initialize())
     app.use(passport.session())
 
-    let auth = require('./auth')(env, passport);
+    const auth = require('./auth')(env, passport);
+    const api = require('./routes/api')(env);
     app.use('/auth', auth);
+    app.use('/api', api);
 
     // production step
     if (env.PRODUCTION) {
