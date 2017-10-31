@@ -10,6 +10,9 @@ coverage/
 build/
 
 
+# secrets
+setup_env.ps1
+
 # misc
 .env
 .DS_Store
