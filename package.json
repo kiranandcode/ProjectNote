@@ -1,0 +1,15 @@
+{
+  "name": "project",
+  "version": "0.0.1",
+  "description": "A note taking application made as part of UCL's 3rd Scenario Week",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "author": "Team 6 (Kiran Gopinathan, Alexandru Bondor, Dhen Padilla)",
+  "license": "MIT"
+}
