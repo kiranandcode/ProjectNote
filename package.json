@@ -7,9 +7,12 @@
     "test": "test",
     "start": "export NODE_ENV=\"production\" && node server/server.js",
     "build": "react-scripts build && move build server",
+    "build:dev": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "dev": "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
+    "dev:back": "nodemon server/server.js",
+    "dev:front": "react-scripts start",
     "prod": "export NODE_ENV=\"production\" && nodemon server/server.js"
   },
   "repository": {

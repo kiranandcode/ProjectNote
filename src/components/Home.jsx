@@ -14,13 +14,13 @@ class Home extends Component {
     }
 
     render() {
-        if(props.user) {
+        if(this.props.user) {
                     // TODO: present retrieved projects if here
             return (
                 <div className="Home">
                     <p>Current User: </p>
                     <code>
-                        {JSON.stringify(props)}
+                        {JSON.stringify(this.props)}
                     </code>
                 </div>
             );
@@ -29,7 +29,7 @@ class Home extends Component {
                 <div className="Home">
                     <p>Current User: </p>
                     <code>
-                        {JSON.stringify(props)}
+                        {JSON.stringify(this.props)}
                     </code>
                 </div>
             );
