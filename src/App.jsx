@@ -93,12 +93,29 @@ class App extends Component {
 
 		console.log("Logging out");
 
-		// TODO: Implement Logging out
+
+		axios.post('/auth/logout').then(response => {
+			console.log(response.data);
+			if(response.status === 200) {
+				this.setState({
+					loggedIn: false,
+					user: null
+				});
+			}
+		});
 	}
 
 
 	_login(username, password) {
-		// TODO: implemnent Logging in
+		axios.post('/auth/login', { username, password }).then(response => {
+			console.log(response);
+			if(response.status === 200) {
+				this.setState({
+					loggedIn: true,
+					user: response.data.user
+				});
+			}
+		});
 	}
 
 	render() {

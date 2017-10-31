@@ -42,11 +42,11 @@ module.exports = (env, passport) => {
      router.post('/logout', (req,res) => {
          if(req.user) {
              req.session.destroy();
-             req.clearCookie();
+             res.clearCookie();
              return res.json({msg: 'logging you out'});
          }
          else {
-             return res.josn({msg: 'no user to log out'});
+             return res.json({msg: 'no user to log out'});
          }
      });
 

@@ -26,9 +26,19 @@ class SignupForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        
+       
+        axios.post('/auth/signup', { username: this.state.username, password: this.state.password }).then(response => {
+            console.log(response);
+            if(!response.data.errmsg) {
+                console.log("No problems");
+                this.setState({
+                    redirectTo: '/login'
+                });
+            } else {
+                console.log('duplicate');
+            }
+        });
 
-        // TODO sent post request
     }
 
 
