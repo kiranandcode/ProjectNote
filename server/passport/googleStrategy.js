@@ -9,7 +9,7 @@ module.exports = (env) => {
             callbackURL: '/auth/google/callback'
         },
         (token, tokenSecret, profile, done) => {
-            if(!env.PRODUCITON) {
+            if(!env.PRODUCTION) {
                 console.log('======== GOOGLE PROFILE ========');
                 console.log(profile);
                 console.log("============= END ==============");
