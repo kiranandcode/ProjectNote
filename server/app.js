@@ -6,7 +6,7 @@ module.exports = (env) => {
     const session = require('express-session');
 
     // authentication packages
-    const passport = require('passport');
+    const passport = require('passport')(env);
 
     // database packages
     const MongoStore = require('connect-mongo')(session);
@@ -41,7 +41,7 @@ module.exports = (env) => {
     app.use(passport.initialize())
     app.use(passport.session())
 
-    let auth = require('./auth')(env);
+    let auth = require('./auth')(env, passport);
     app.use('/auth', auth);
 
     // production step
