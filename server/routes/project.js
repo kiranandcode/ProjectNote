@@ -43,7 +43,7 @@ module.exports = (env) => {
             });
 
             newProject.save((err, savedProject) => {
-                if(err) res.json(err);
+                if(err) res.json({error: err});
                 else return res.json(savedProject);
             });
         });
@@ -64,7 +64,7 @@ module.exports = (env) => {
                 next();
             }
         }).catch((err) => {
-            res.json(err);
+            res.json({error: err});
         });
     });
 
@@ -75,7 +75,7 @@ module.exports = (env) => {
         Project.findOneAndRemove({_id: project_id, people: user_id}).exec().then((removed) => {
             res.json({removed: removed.name});
         }).catch(err => {
-            res.json(err);
+            res.json({error: err});
         });
     })
 
@@ -113,7 +113,7 @@ module.exports = (env) => {
         }).exec().then((data) => {
             res.json(data.people);
         }).catch(err => {
-            res.json(err);
+            res.json({error: err});
         });
     });
 
@@ -133,13 +133,13 @@ module.exports = (env) => {
                 Project.update({ _id: project_id}, {$push: { people: user_id}}).then((data) => {
                     res.json(data);
                 }).catch(err => {
-                    res.json(err);
+                    res.json({error: err});
                 });
                 } else {
                     res.json({error: 'User already member of the project'});
                 }
             }).catch(err => {
-                res.json(err);
+                res.json({error: err});
            });
 
         }).catch(err => {
@@ -167,13 +167,13 @@ module.exports = (env) => {
                 Project.update({ _id: project_id}, {$pull: { people: user_id}}).then((data) => {
                     res.json(data);
                 }).catch(err => {
-                    res.json(err);
+                    res.json({error: err});
                 });
                 } else {
                     res.json({error: 'User is not a member of the project'});
                 }
             }).catch(err => {
-                res.json(err);
+                res.json({error: err});
            });
 
         }).catch(err => {

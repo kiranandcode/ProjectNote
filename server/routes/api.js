@@ -1,9 +1,9 @@
 module.exports = (env) => {
     const express = require('express');
     const router = express.Router();
-    const User = require('../db/models/user');
 
     const project = require('./project')(env);
+    const user = require('./user')(env);
 
     router.use((req,res,next) => {
         if(!req.user) {
@@ -14,6 +14,7 @@ module.exports = (env) => {
     });
 
     router.use('/project', project);
+    router.use('/user', user);
 
      return router;
 }
