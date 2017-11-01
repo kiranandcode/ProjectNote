@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import env from '../../env';
+import Dialog from 'react-dialog';
+import { Button, Panel } from 'react-bootstrap';
 
 
 class Project extends Component {
@@ -13,10 +15,18 @@ class Project extends Component {
             posts: [],
             message: '',
             authorized: false,
-            errors: []
+            errors: [],
+            redirect: null,
+            isDialogOpen: false
         };
 
         this.getposts = this.getposts.bind(this);
+        this.deleteProject = this.deleteProject.bind(this);
+        this.startDelete = this.startDelete.bind(this);
+        this.closeDelete = this.closeDelete.bind(this);
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     getposts(props) {
@@ -54,8 +64,6 @@ class Project extends Component {
             });
         }
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
 
@@ -68,33 +76,63 @@ class Project extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        if(this.state.message) {
-        axios.post(env.root + '/api/project/' + this.props.project_id + '/posts/add', { message: this.state.message }).then(response => {
-            if (response.data && !response.data.error) {
+        if (this.state.message) {
+            axios.post(env.root + '/api/project/' + this.props.project_id + '/posts/add', { message: this.state.message }).then(response => {
+                if (response.data && !response.data.error) {
+                    this.setState({
+                        message: '',
+                        errors: []
+                    });
+                    this.getposts(this.props);
+                } else if (response.data && response.data.error) {
+                    this.setState({
+                        errors: [JSON.stringify(response.data.eror)]
+                    });
+                } else {
+                    this.setState({
+                        errors: ['Unknown error occurred']
+                    });
+                }
+            }).catch(err => {
                 this.setState({
-                    message: '',
-                    errors: []
+                    errors: [JSON.stringify(err)]
                 });
-                this.getposts(this.props);
-            } else if (response.data && response.data.error) {
-                this.setState({
-                    errors: [JSON.stringify(response.data.eror)]
-                });
-            } else {
-                this.setState({
-                    errors: ['Unknown error occurred']
-                });
-            }
-        }).catch(err => {
-            this.setState({
-                errors: [JSON.stringify(err)]
             });
-        });
-    } else {
+        } else {
+            this.setState({
+                errors: ['Can not have a post with no message']
+            });
+        }
+    }
+
+
+    startDelete() {
         this.setState({
-            errors: ['Can not have a post with no message']
+            isDialogOpen: true
+        });
+
+    }
+
+    closeDelete() {
+        this.setState({
+            isDialogOpen: false
         });
     }
+    deleteProject() {
+        
+        if (this.props.user && this.props.project_id) {
+            axios.delete(env.root + '/api/project/' + this.props.project_id).then(response => {
+                if (response.data && !response.data.error) {
+                    this.setState({
+                        redirect: '/'
+                    });
+                    this.closeDelete();
+                }
+            }).catch(err => {
+                console.log(err);
+                    this.closeDelete();
+            });
+        }
     }
 
     componentDidMount() {
@@ -110,7 +148,7 @@ class Project extends Component {
     render() {
 
         console.log("Project-render()");
-        if (this.props.user) {
+        if (this.props.user && !this.state.redirect) {
             // TODO: present retrieved projects if here
             if (this.state.authorized) {
                 return (
@@ -134,7 +172,6 @@ class Project extends Component {
                                 </ul>
                             </div>
                             )
-
                         }
 
                         <ul style={{ listStyle: 'none' }}>
@@ -144,6 +181,19 @@ class Project extends Component {
                                 </li>
                             ))}
                         </ul>
+
+                        <Button onClick={this.startDelete}>Delete Project</Button>
+                        {
+                            this.state.isDialogOpen && (
+                                <Panel header="Confirm delete" bsStyle="danger">
+                                    Are you sure you want to delete this project?
+                                    <Button onClick={this.deleteProject}>Yes, delete it.</Button>
+                                    <Button onClick={this.closeDelete}>No, nevermind.</Button>
+                                </Panel>
+                            )
+                        }
+
+
                     </div>
                 );
             } else {
