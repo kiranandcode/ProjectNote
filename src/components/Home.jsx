@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import env from '../env';
 
+import {ListGroup, ListGroupItem, Badge, Glyphicon} from 'react-bootstrap';
 
 class Home extends Component {
     constructor(props) {
@@ -16,22 +17,22 @@ class Home extends Component {
 
     getprojects(props) {
         console.log("Home - getprojects()");
-            if(props.user) {
-                axios.get(env.root + '/api/project').then(response => {
-                    this.setState({
-                        projects: response.data
-                    });
-                }).catch(err => {
-                    this.setState({
-                        projects: []
-                    });
+        if (props.user) {
+            axios.get(env.root + '/api/project').then(response => {
+                this.setState({
+                    projects: response.data
                 });
-            } else {
+            }).catch(err => {
                 this.setState({
                     projects: []
                 });
-            }
- 
+            });
+        } else {
+            this.setState({
+                projects: []
+            });
+        }
+
     }
     componentDidMount() {
         console.log("Home-componentDidMount");
@@ -41,32 +42,31 @@ class Home extends Component {
         console.log("Home-componentWillRecieveProps()");
         // TOOD: retrieve projects from online
         this.getprojects(props);
-       
+
     }
 
     render() {
         console.log("Home-Render()");
-        if(this.props.user) {
-                    // TODO: present retrieved projects if here
+        if (this.props.user) {
+            // TODO: present retrieved projects if here
             return (
-                <div className="Home">
-                    <h3>Your projects</h3>
-                    
-                    <ul style={{listStyle: 'none'}}>
-                    {this.state.projects.map(project => (
-                        <Link to={"/project/view/" + project._id}>
-                            <li>
-                                <p><strong>{project.name}</strong> - {project.people.length}</p>
-                            </li>
-                        </Link>
-                    ))}
-                    <Link to="/project/new">
-                    <li>
-                        Create new project
-                    </li>
-                    </Link>
-                    </ul>
-              </div>
+                <div className="Home container">
+                    <h3>Active Projects</h3>
+                    <ListGroup>
+                        {this.state.projects.map(project => (
+                            <ListGroupItem>
+                                <Link to={"/project/view/" + project._id}>
+                                    <p><strong>{project.name}</strong>   <Badge>{project.people.length} <Glyphicon glyph="user"/></Badge></p>
+                                </Link>
+                            </ListGroupItem>
+                        ))}
+                        <ListGroupItem>
+                            <Link to="/project/new">
+                                <Glyphicon glyph="plus"/> Create new project
+                            </Link>
+                        </ListGroupItem>
+                    </ListGroup>
+                </div>
             );
             // TOOD add functionality to create Project
         } else {
