@@ -159,10 +159,12 @@ class Project extends Component {
                             <form className="PostForm">
                                 <FormGroup controlId="formControlsTextarea">
                                     <ControlLabel>Post</ControlLabel>
-                                    <FormControl componentClass="textarea" placeholder="textarea" value={this.state.message} onChange={this.handleChange} />
+                                    <FormControl componentClass="textarea" placeholder="Enter your development update here" value={this.state.message} onChange={this.handleChange} />
                                 </FormGroup>
 
-                                <button onClick={this.handleSubmit}>Send</button>
+                                <Button onClick={this.handleSubmit} style={{
+                                margin: '10px'
+                            }}>Send</Button>
                             </form>
                             {this.state.errors.length !== 0 &&
                                 (<div><h4>Errors</h4>
@@ -191,13 +193,29 @@ class Project extends Component {
                             </ul>
 
 
-                            <Button onClick={this.startDelete}>Delete Project</Button>
+                            <Button onClick={this.startDelete} style={{
+                                margin: '10px'
+                            }}>Delete Project</Button>
+
+                            <Link to={'/project/manage/' + this.state.id}>
+                                <Button>
+                                    Manage Team
+                                </Button>
+                            </Link>
+
+
+
                             {
                                 this.state.isDialogOpen && (
                                     <Panel header="Confirm delete" bsStyle="danger">
-                                        Are you sure you want to delete this project?
-                                    <Button onClick={this.deleteProject}>Yes, delete it.</Button>
-                                        <Button onClick={this.closeDelete}>No, nevermind.</Button>
+                                        <p>
+                                            Are you sure you want to delete this project?
+                                        </p>
+                                        <p>
+                                        <Button bsStyle="danger" onClick={this.deleteProject}>Delete it</Button>
+                                        <span> </span>
+                                        <Button onClick={this.closeDelete}>Keep it</Button>
+                                        </p>
                                     </Panel>
                                 )
                             }
