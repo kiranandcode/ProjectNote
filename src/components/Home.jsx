@@ -10,10 +10,12 @@ class Home extends Component {
         this.state = {
             projects: []
         };
+
+        this.getprojects = this.getprojects.bind(this);
     }
 
-    componentWillReceiveProps(props) {
-        // TOOD: retrieve projects from online
+    getprojects(props) {
+        console.log("Home - getprojects()");
             if(props.user) {
                 axios.get(env.root + '/api/project').then(response => {
                     this.setState({
@@ -29,10 +31,21 @@ class Home extends Component {
                     projects: []
                 });
             }
-        
+ 
+    }
+    componentDidMount() {
+        console.log("Home-componentDidMount");
+        this.getprojects(this.props);
+    }
+    componentWillReceiveProps(props) {
+        console.log("Home-componentWillRecieveProps()");
+        // TOOD: retrieve projects from online
+        this.getprojects(props);
+       
     }
 
     render() {
+        console.log("Home-Render()");
         if(this.props.user) {
                     // TODO: present retrieved projects if here
             return (

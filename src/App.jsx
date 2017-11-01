@@ -8,7 +8,8 @@ import LoginForm from './components/Login/LoginForm';
 import SignupForm from './components/SignupForm';
 import Header from './components/Header';
 import Home from './components/Home';
-import Project from './components/Project';
+import Project from './components/Project/Project';
+import NewProjectForm from './components/Project/NewProjectForm';
 
 
 const DisplayLinks = props => {
@@ -134,9 +135,10 @@ class App extends Component {
 					_login={this._login}
 					_googleSignin={this._googleSignin}/>
 				}/>
-				<Route path="/project/new" render={() => <Home user={this.state.user}/>}/>
+				<Route path="/project/new" render={() => <NewProjectForm user={this.state.user}/>}/>
 				<Route path="/project/view/:id" render={(props) => 
-					<Project user={this.state.user} project_id={props.match.params.id}/>
+					<Project user={this.state.user} 
+							project_id={props.match.params.id}/>
 				}/>
 
 

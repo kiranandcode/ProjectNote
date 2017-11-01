@@ -6,9 +6,10 @@ const http = require('http');
 
 const port = normalizePort(env.PORT);
 app.set('port', port);
+
+//TODO Remove
 app.use((req,res,next) => {
-    console.log(req);
-    console.log(res);
+    console.log(req.body);
     next();
 });
 
