@@ -22,9 +22,9 @@ module.exports = (env) => {
 
     router.post('/find', (req,res) => {
         const user_id = req.user._id;
-        const { user_name } = req.body;
+        const { username } = req.body;
 
-        User.find({ 'local.username': user_name }).select('-local.password -__v -projects').then(data => {
+        User.find({ 'local.username': username }).select('-local.password -__v -projects').then(data => {
                 res.json(data);
         }).catch(err => {
             res.json({error: err});

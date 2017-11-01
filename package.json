@@ -6,7 +6,7 @@
   "scripts": {
     "test": "react-scripts test --env=jsdom",
     "start": "export NODE_ENV=\"production\" && node server/server.js",
-    "build": "react-scripts build && move build server",
+    "build": "react-scripts build",
     "build:dev": "rimraf ./build/static/ && react-scripts build",
     "eject": "react-scripts eject",
     "dev": "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "concurrently": "^3.5.0",
+    "react-debounce-input": "^3.1.0",
     "react-scripts": "1.0.7",
     "rimraf": "^2.6.2"
   }

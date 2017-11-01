@@ -183,6 +183,11 @@ class Project extends Component {
                         </ul>
 
                         <Button onClick={this.startDelete}>Delete Project</Button>
+                            <Link to={"/project/manage/" + this.props.project_id}>
+                        <Button>
+                                Manage Users
+                        </Button>
+                            </Link>
                         {
                             this.state.isDialogOpen && (
                                 <Panel header="Confirm delete" bsStyle="danger">

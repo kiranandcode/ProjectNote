@@ -10,6 +10,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Project from './components/Project/Project';
 import NewProjectForm from './components/Project/NewProjectForm';
+import Manage from './components/Project/Manage';
 
 
 const DisplayLinks = props => {
@@ -138,6 +139,10 @@ class App extends Component {
 				<Route path="/project/new" render={() => <NewProjectForm user={this.state.user}/>}/>
 				<Route path="/project/view/:id" render={(props) => 
 					<Project user={this.state.user} 
+							project_id={props.match.params.id}/>
+				}/>
+				<Route path="/project/manage/:id" render={(props) => 
+					<Manage user={this.state.user} 
 							project_id={props.match.params.id}/>
 				}/>
 
