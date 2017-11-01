@@ -50,7 +50,7 @@ class Home extends Component {
                     // TODO: present retrieved projects if here
             return (
                 <div className="Home">
-                    <h3>Your projects</h3>
+                    <h3>Hello, {this.props.user.local.username}</h3>
                     
                     <ul style={{listStyle: 'none'}}>
                     {this.state.projects.map(project => (

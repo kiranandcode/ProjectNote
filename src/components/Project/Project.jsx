@@ -3,7 +3,8 @@ import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import env from '../../env';
 import Dialog from 'react-dialog';
-import { Button, Panel } from 'react-bootstrap';
+import { Button, Panel, Badge, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import moment from 'moment';
 
 
 class Project extends Component {
@@ -69,7 +70,7 @@ class Project extends Component {
 
     handleChange(event) {
         this.setState({
-            [event.target.name]: event.target.value
+            message: event.target.value
         });
     }
 
@@ -119,7 +120,7 @@ class Project extends Component {
         });
     }
     deleteProject() {
-        
+
         if (this.props.user && this.props.project_id) {
             axios.delete(env.root + '/api/project/' + this.props.project_id).then(response => {
                 if (response.data && !response.data.error) {
@@ -130,7 +131,7 @@ class Project extends Component {
                 }
             }).catch(err => {
                 console.log(err);
-                    this.closeDelete();
+                this.closeDelete();
             });
         }
     }
@@ -153,47 +154,55 @@ class Project extends Component {
             if (this.state.authorized) {
                 return (
                     <div className="Home">
-                        <h3>DevLog for Project</h3>
-                        <form className="PostForm">
-                            <label htmlFor="message">Update: </label>
-                            <input type="text" name="message" value={this.state.message} onChange={this.handleChange} />
-                            <button onClick={this.handleSubmit}>Send</button>
-                        </form>
-                        {this.state.errors.length !== 0 &&
-                            (<div><h4>Errors</h4>
-                                <ul>
-                                    {this.state.errors.map((err) => (
-                                        <li>
-                                            <pre>
-                                                {JSON.stringify(err)}
-                                            </pre>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            )
-                        }
+                        <div className="container">
+                            <h3>DevLog for Project</h3>
+                            <form className="PostForm">
+                                <FormGroup controlId="formControlsTextarea">
+                                    <ControlLabel>Post</ControlLabel>
+                                    <FormControl componentClass="textarea" placeholder="textarea" value={this.state.message} onChange={this.handleChange} />
+                                </FormGroup>
 
-                        <ul style={{ listStyle: 'none' }}>
-                            {this.state.posts.map(post => (
-                                <li>
-                                    <p><strong>{post.person.local.username}</strong> - {post.message}/{post.date}</p>
-                                </li>
-                            ))}
-                        </ul>
+                                <button onClick={this.handleSubmit}>Send</button>
+                            </form>
+                            {this.state.errors.length !== 0 &&
+                                (<div><h4>Errors</h4>
+                                    <ul>
+                                        {this.state.errors.map((err) => (
+                                            <li>
+                                                <pre>
+                                                    {JSON.stringify(err)}
+                                                </pre>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                )
+                            }
 
-                        <Button onClick={this.startDelete}>Delete Project</Button>
-                        {
-                            this.state.isDialogOpen && (
-                                <Panel header="Confirm delete" bsStyle="danger">
-                                    Are you sure you want to delete this project?
+                            <ul style={{ listStyle: 'none' }}>
+                                {this.state.posts.map(post => (
+                                    <li className="posts">
+                                        <Panel bsStyle="info" header={<p>{post.person.local.username + "  -  "} <Badge>{moment(post.date).format("LLLL")}</Badge> </p>}>
+                                            <p>{post.message}</p>
+                                        </Panel>
+
+                                    </li>
+                                ))}
+                            </ul>
+
+
+                            <Button onClick={this.startDelete}>Delete Project</Button>
+                            {
+                                this.state.isDialogOpen && (
+                                    <Panel header="Confirm delete" bsStyle="danger">
+                                        Are you sure you want to delete this project?
                                     <Button onClick={this.deleteProject}>Yes, delete it.</Button>
-                                    <Button onClick={this.closeDelete}>No, nevermind.</Button>
-                                </Panel>
-                            )
-                        }
+                                        <Button onClick={this.closeDelete}>No, nevermind.</Button>
+                                    </Panel>
+                                )
+                            }
 
-
+                        </div>
                     </div>
                 );
             } else {

@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "concurrently": "^3.5.0",
+    "moment": "^2.19.1",
     "react-scripts": "1.0.7",
     "rimraf": "^2.6.2"
   }
