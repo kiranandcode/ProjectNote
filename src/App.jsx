@@ -11,47 +11,70 @@ import Home from './components/Home';
 import Project from './components/Project/Project';
 import NewProjectForm from './components/Project/NewProjectForm';
 
+import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
+
 
 const DisplayLinks = props => {
 	if(props.loggedIn) {
 		return (
-			<nav className="navbar">
-				<ul className="nav">
-						<li className="nav-item">
-							<Link to="/" className="nav-link">
-								Home
-							</Link>
-						</li>
-						<li>
-							<Link to="#" className="nav-link" onClick={props._logout}>
+			<Navbar inverse collapseOnSelect>
+    <Navbar.Header>
+      <Navbar.Brand>
+        <a href="#">Note Web-App</a>
+      </Navbar.Brand>
+      <Navbar.Toggle />
+    </Navbar.Header>
+    <Navbar.Collapse>
+      <Nav>
+        <NavItem eventKey={1}>
+			<Link to="/" className="nav-link">
+				Home
+			</Link>
+		</NavItem>
+      </Nav>
+      <Nav pullRight>
+        <NavItem eventKey={1}>
+			<Link to="#" className="nav-link" onClick={props._logout}>
 								Logout
-							</Link>
-						</li> 
-				</ul>
-			</nav>
+							</Link>	
+		</NavItem>
+      </Nav>
+    </Navbar.Collapse>
+  </Navbar>
+			
 		);
 	} else {
 		return (
-			<nav className="navbar">
-				<ul className="nav">
-					<li className="nav-item">
-							<Link to="/" className="nav-link">
-								Home
-							</Link>
-					</li>
-					<li className="nav-item">
-						<Link to="/login" className="nav-link">
+			<Navbar inverse collapseOnSelect>
+    <Navbar.Header>
+      <Navbar.Brand>
+        <a href="#">Note Web-App</a>
+      </Navbar.Brand>
+      <Navbar.Toggle />
+    </Navbar.Header>
+    <Navbar.Collapse>
+      <Nav>
+        <NavItem eventKey={1}>
+			<Link to="/" className="nav-link">
+				Home
+			</Link>
+		</NavItem>
+      </Nav>
+      <Nav pullRight>
+        <NavItem eventKey={1}>
+			<Link to="/login" className="nav-link">
 							Login
 						</Link>
-					</li>
-
-					<li className="nav-item">
-						<Link to="/signup" className="nav-link">
+		</NavItem>
+		<NavItem eventKey={2}>
+		<Link to="/signup" className="nav-link">
 							Sign up	
 						</Link>
-					</li>
-				</ul>
-			</nav>
+		</NavItem>
+      </Nav>
+    </Navbar.Collapse>
+  </Navbar>
+			
 		);
 	}
 };
@@ -110,24 +133,27 @@ class App extends Component {
 
 
 	_login(username, password) {
+		console.log("Login called");
 		axios.post(env.root + '/auth/login', { username, password }).then(response => {
 			console.log(response);
+			console.log("login");
 			if(response.status === 200) {
 				this.setState({
 					loggedIn: true,
 					user: response.data.user
 				});
 			}
+		}).catch((err ) => {
+			console.log("error");
+			console.log(err);
 		});
 	}
 
 	render() {
 		return (
 			<div className="App">
-				<h1>Project Note</h1>
-				<Header user={this.state.user}/>
-				<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn}/>
 
+				<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn}/>
 
 				<Route exact path="/" render={() => <Home user={this.state.user}/>}/>
 				<Route exact path="/login" render={() => 
