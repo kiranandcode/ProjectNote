@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import env from '../../env';
 import Dialog from 'react-dialog';
-import { Button, Panel } from 'react-bootstrap';
+import { Button, Panel, Glyphicon, ListGroup, ListGroupItem, FormControl, FormGroup, ControlLabel, Form, Col, Grid, Row } from 'react-bootstrap';
 import { DebounceInput } from 'react-debounce-input';
 
 class Manage extends Component {
@@ -106,7 +106,7 @@ class Manage extends Component {
 
     addUser(user_id) {
         if (this.props.user && this.props.project_id && user_id) {
-        console.log("add user posting to server!");
+            console.log("add user posting to server!");
             axios.post(env.root + '/api/project/' + this.props.project_id + '/users/add', { user_id }).then(response => {
                 console.log("Launching add user and got this.");
                 console.log('response is ' + response);
@@ -149,33 +149,59 @@ class Manage extends Component {
             // TODO: present retrieved projects if here
             if (this.state.authorized) {
                 return (
-                    <div className="Home">
+                    <div className="Home container">
                         <h3>Project team members</h3>
-                        <ul style={{ listStyle: 'none' }}>
+                        <ListGroup>
                             {this.state.users.map(user => {
                                 let boundDeleteUser = this.deleteUser.bind();
-                                let id = (() => {return user._id})(); 
+                                let id = (() => { return user._id })();
                                 return (
-                                    <li >
-                                        <p><strong>{user.local.username}</strong></p>
-                                        <Button onClick={(() => { return () => { this.deleteUser(id); }})()}>
-                                            Remove
-                                    </Button>
-                                    </li>
+                                    <ListGroupItem>
+                                        <Grid>
+                                            <Row>
+
+                                        <Col sm={2} md={2} lg={2}></Col>
+
+                                        <Col sm={8} md={8} lg={8}>
+                                            <strong>{user.local.username}</strong>
+                                        </Col>
+                                        <Col>
+                                            <Button bsStyle="danger" onClick={(() => { return () => { this.deleteUser(id); } })()}>
+                                                <Glyphicon glyph="remove" /> 
+                                        </Button>
+                                        </Col>
+                                        </Row>
+                                        </Grid>
+                                    </ListGroupItem>
                                 );
                             })}
-                        </ul>
+                        </ListGroup>
 
+                        <Link to={'/project/view/' + this.props.project_id }>
+                        <Button>
+                            Back
+                        </Button>
+                        </Link>
 
                         <h4>Add users</h4>
-                        <form className="PostForm">
-                            <label htmlFor="">Username: </label>
-                            <DebounceInput minLength={1} debounceTimeout={300} name="" onChange={this.handleChange} />
-                        </form>
+                        <Form horizontal>
+                            <FormGroup>
+                                <Col sm={3}>
+                                    <ControlLabel>Username</ControlLabel>
+                                </Col>
+                                {/* <label htmlFor="">Username: </label> */}
+                                {/* <DebounceInput minLength={1} debounceTimeout={300} name="" onChange={this.handleChange} /> */}
+
+                                <Col md={5}>
+                                    <FormControl componentClass={DebounceInput} minLength={1} debounceTimeout={300} name="" placeholder="Search for a user" onChange={this.handleChange} />
+                                </Col>
+
+                            </FormGroup>
+                        </Form>
 
                         {this.state.errors.length !== 0 &&
                             (<div><h4>Errors</h4>
-                                <ul>
+                                <ul style={{ listStyle: 'none' }}>
                                     {this.state.errors.map((err) => (
                                         <li>
                                             <pre>
@@ -187,20 +213,32 @@ class Manage extends Component {
                             </div>
                             )
                         }
-                        <ul style={{ listStyle: 'none' }}>
+                        <ListGroup>
                             {this.state.retrievedUsers.map(user => {
-                                let id = (() => { return  user._id;})();
+                                let id = (() => { return user._id; })();
                                 return (
-                                    <li >
-                                        <p><strong>{user.local.username}</strong></p>
-                                        <Button onClick={(() => { return () => {this.addUser(id);}})()}>
-                                            Add
-                                    </Button>
-                                    </li>
+                                    <ListGroupItem>
+                                        <Grid>
+                                            <Row>
+                                        <Col sm={2} md={2} lg={2}></Col>
+
+                                        <Col sm={8} md={8} lg={8}>
+
+                                        <strong>{user.local.username}</strong>
+                                        </Col>
+                                        <Col>
+                                            <Button style={{
+                                            }} bsStyle="success" onClick={(() => { return () => { this.addUser(id); } })()}>
+                                                <Glyphicon glyph="plus" />
+                                            </Button>
+                                            </Col>
+                                            </Row>
+                                        </Grid>
+                                    </ListGroupItem>
                                 );
                             }
                             )}
-                        </ul>
+                        </ListGroup>
 
 
 
