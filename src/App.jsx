@@ -2,11 +2,13 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import './App.css';
+import env from './env';
 
 import LoginForm from './components/Login/LoginForm';
 import SignupForm from './components/SignupForm';
 import Header from './components/Header';
 import Home from './components/Home';
+import Project from './components/Project';
 
 
 const DisplayLinks = props => {
@@ -68,7 +70,7 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('/auth/user').then(response => {
+		axios.get(env.root + '/auth/user').then(response => {
 			console.log(response.data);
 
 			if(response.data.user) {
@@ -94,7 +96,7 @@ class App extends Component {
 		console.log("Logging out");
 
 
-		axios.post('/auth/logout').then(response => {
+		axios.post(env.root + '/auth/logout').then(response => {
 			console.log(response.data);
 			if(response.status === 200) {
 				this.setState({
@@ -107,7 +109,7 @@ class App extends Component {
 
 
 	_login(username, password) {
-		axios.post('/auth/login', { username, password }).then(response => {
+		axios.post(env.root + '/auth/login', { username, password }).then(response => {
 			console.log(response);
 			if(response.status === 200) {
 				this.setState({
@@ -132,6 +134,12 @@ class App extends Component {
 					_login={this._login}
 					_googleSignin={this._googleSignin}/>
 				}/>
+				<Route path="/project/new" render={() => <Home user={this.state.user}/>}/>
+				<Route path="/project/view/:id" render={(props) => 
+					<Project user={this.state.user} project_id={props.match.params.id}/>
+				}/>
+
+
 
 				<Route exact path="/signup" component={SignupForm}/>
 			</div>

@@ -20,6 +20,22 @@ module.exports = (env) => {
     const app = express();
     const PORT = env.PORT;
 
+    const methodOverride = require('method-override');
+    app.use(methodOverride());
+    app.use((req,res,next) => {
+        res.header('Access-Control-Allow-Credentials', true);
+        res.header('Access-Control-Allow-Origin', req.headers.origin);
+        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+        res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+        if('OPTIONS' === req.method) {
+            res.send(200);
+        } else {
+            next();
+        }
+    });
+
+
     // ---- MIDDLE WARE -----
     // logging middleware
     app.use(morgan('dev'));
@@ -36,7 +52,7 @@ module.exports = (env) => {
             resave: false,
             saveUninitialized: false
         })
-    )
+    );
 
     app.use(passport.initialize())
     app.use(passport.session())

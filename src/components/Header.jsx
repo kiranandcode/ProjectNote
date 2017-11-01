@@ -20,7 +20,7 @@ const Header = props => {
     }
 
     return (
-        <div classname="Header">
+        <div className="Header">
             {Greeting}
         </div>
     );

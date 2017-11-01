@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import googleButton from './btn_google_signin_dark_normal_web.png';
+import env from '../../env';
 
 
 class LoginForm extends Component {
@@ -52,7 +53,7 @@ class LoginForm extends Component {
                         <button onClick={this.handleSubmit}>Login</button>
                     </form>
 
-                    <a href="/auth/google">
+                    <a href={env.root + "/auth/google"}>
                         <img src={googleButton} alt="Sign in with Google"/>
                     </a>
                 </div>

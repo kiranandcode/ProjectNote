@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import env from '../env';
 
 
 class SignupForm extends Component {
@@ -27,7 +28,7 @@ class SignupForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
        
-        axios.post('/auth/signup', { username: this.state.username, password: this.state.password }).then(response => {
+        axios.post(env.root + '/auth/signup', { username: this.state.username, password: this.state.password }).then(response => {
             console.log(response);
             if(!response.data.errmsg) {
                 console.log("No problems");

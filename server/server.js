@@ -6,6 +6,11 @@ const http = require('http');
 
 const port = normalizePort(env.PORT);
 app.set('port', port);
+app.use((req,res,next) => {
+    console.log(req);
+    console.log(res);
+    next();
+});
 
 
 const server = http.createServer(app);
