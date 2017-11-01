@@ -21,24 +21,24 @@ const DisplayLinks = props => {
 			<Navbar inverse collapseOnSelect>
     <Navbar.Header>
       <Navbar.Brand>
-        <a href="#">Note Web-App</a>
+        <a href="#">Project Note</a>
       </Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav>
+		<Link to="/" className="nav-link">
         <NavItem eventKey={1}>
-			<Link to="/" className="nav-link">
 				Home
-			</Link>
 		</NavItem>
+			</Link>
       </Nav>
       <Nav pullRight>
-        <NavItem eventKey={1}>
 			<Link to="#" className="nav-link" onClick={props._logout}>
+        <NavItem eventKey={1}>
 								Logout
-							</Link>	
 		</NavItem>
+		</Link>	
       </Nav>
     </Navbar.Collapse>
   </Navbar>
@@ -49,7 +49,7 @@ const DisplayLinks = props => {
 			<Navbar inverse collapseOnSelect>
     <Navbar.Header>
       <Navbar.Brand>
-        <a href="#">Note Web-App</a>
+        <a href="#">Project Note</a>
       </Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>
@@ -70,7 +70,7 @@ const DisplayLinks = props => {
 		<NavItem eventKey={2}>
 		<Link to="/signup" className="nav-link">
 							Sign up	
-						</Link>
+					</Link>
 		</NavItem>
       </Nav>
     </Navbar.Collapse>
@@ -154,7 +154,7 @@ class App extends Component {
 		return (
 			<div className="App">
 
-				<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn}/>
+				<DisplayLinks user={this.state.user} _logout={this._logout} loggedIn={this.state.loggedIn}/>
 
 				<Route exact path="/" render={() => <Home user={this.state.user}/>}/>
 				<Route exact path="/login" render={() => 
