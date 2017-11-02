@@ -62,6 +62,9 @@ module.exports = (env) => {
     app.use('/auth', auth);
     app.use('/api', api);
 
+
+    //TODO: Setup Auto Pulling from Git
+
     // production step
     if (env.PRODUCTION) {
         const path = require('path');
