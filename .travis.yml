@@ -1,32 +1,37 @@
 language: node_js
 node_js:
-  - 8.2.1
+- 8.2.1
 env:
-- [
-    {secure: ""},
-    {secure: ""}
-  ]
+  matrix:
+  - - secure: ''
+    - secure: ''
+  - secure: FFfUnI4iPkli48sy0WtpJqqin87zPfP09awgEh6KLxdPeB6q68CAmLGNpMNf0Ajl1QdEUGDnh/juo2Q5Id79Q9ENeS5hQtWWvR3u5mpULMmAIT/GxJsqNOpX5aCS4z4HFPPZPrfUwSZmipuppaoreO7MC9mLXzZjBUzDHhA0L00PmY6rVt3KtBcdTgU07bNcpQIfuziUNqTMcScJsrCI+Qov81kc4kiqrCzMJ1mdhpkmNcuA8Y38PADVBll99vf8/MpzHYBoy1CHDreeNC1t6iwcguWx91d+APcuI6s1RJ9+9mDC3WAJyAbjsxI2QUe4fiWnXJInyj/85rX+Ss4hwLTNZjr9ysLHDaVoXzezVIMmJk88hc1Rl3f4s6HLgouq5oS5my93qhuXgKPQ8KWdsO6tIFEffWqjgVOXQbcecYnDcUW7iHMXatjNTagitHd1Swwx6TSqi0h2NK7tgCDDBjqynhA+V/4xYHKT8qFl+NFryGD5YoDKb0hMHORvGJUJnYNorYL7tqAXhF6628V+peaIp4x6cpoWQdrm6ACaT4qc6pueJwt0y7xl4Bea1SmPkaOKomnCm8qRQ/MGHFqel7a4S5g9XWuT0cS2enMtMqrTbTqFU6hpzJTevoPSJ9GPLzl+SbIztovtzA4rWjCrlq/c7mFAon+XqXLGlHbj//E=
+  - secure: v68DhBmFHUqeVV9TLyWGwGQLMUna9yzR1yX6M4SZbpX+aRgWOXUwL7DpttnFy1Gf7agd5VLXfV8nMC5ic28rtDxhlzvbTt8YFrlufL9CaVZmL/IIpu9Xo01Dv88Lp4z6d3W/VPVgRqhriP5PEKZ2jEpuI+7bdkLThq+ylD73Cy9RlDp/n1eRJknEVWWZI6P1xStCR8A4l16OtfedfGrsehk+k3kxrFOt4MYyWrWak+0J7I34iXz+sVSufD+LBsC1TYUwLZbmxFceAn10eEjUcd1/06SqdOrUeaMQl3ENnPV7NkU/X9PK8AEXm/FcITA+TA0Y6TkoicWgNER3bkCeJ2VhH6LE4+qwnn32QLbVUbVn0WIzmUYJ3/I3LWRx/KBiR48OzNrnYiuPTdfmPiybvQD8S2HgaKebHJxrSWdFf0/AbP7KHS1OU19r4KrR9e8WxHs7OwtMAEo1cyg+xxRWsN6/PmU6T4hHrESjscDRKGx1JzVmrUtNB95Fqim9VgcUCOHOMafKfGpZRwfmQUruSEmtnQWYAv5x/YwokaATxJ2WKu5rvvSTlXG0Q4xSjXqF4lG59W6w4NxLQqd3NjSc6VXlMr1v6zNQ9/vW8eIpVYDy/KEx2Vongx7OsEOWkXBXrzP7AOvPwAyZxo/LyLQU0bqWz5TzDFB+yR9VfDKAuMU=
+  - secure: LkYv/fSAz41C8E8UG2+IgazzUW5E7xhfBnTWpuoQaMJq9idwYCDMuQyF7lETjKBMmpwj/g5LyMlzaSBmMYkZupMX+rI9X/4HKk3C8IuajOGmkbvnOcuotwL90Ty3QKqwELGuNlvg50lsimnyjcjvbXT6sd/JjRwNg57slV2FAU40Ss5yExdhL0J8pvNQS8jJ3/M8nSI00BWSi8hc283TcFVShcdXGuBAyLIiUXjHB5PTVlfYbOq+u/oQ0aCMZ2j2EFpclrvRRAbtF9azW0eVlE7Yz+bpIuw61163W54lgi6M4ZV6O5JV0gNHHEeOmBTN7DJvEVIGYsYwgw9JWJC5mRUM+wiAAANPwKkf95btQ+LkGG55RlDkx4NMX/sShATGGiWpzasRgKjJm5VSFM9KkHIq2ZIHSng/HO3aXWdHglXxS2IcLE5zqIxwrKx0fOZzEdgWQI7vjPwrZgzdrMzfdH4ia1UGcVE8GIeHajs4kntKvG57W1oYOryMfVh88OvTxY5XhJB7LFe7Iej2Q8YjweFkkWC70jmhX0zu7TmcK+q2xTwbia3gGejKPRtYPsTsrsvTCHtR318DzKCM6lE27RHr+5t74PcXNnI954jscrJunSttyKVs5B5xsRWIpCMT3eAqoN7m1NGrw0v6Q9PX4AYKtCA1ztsqnlOF0aF+WSQ=
+  - secure: uPYU00q6E8+D/pN3MMRqTm1NjjGWEDCVwnHj507I87ktOO+qLH9kXc1LBb2vwZyq24hZst/bPvpJ38gc3KYNvKVDoSzxuWRKIDdPo5NqmY09Enw4U4ngVZIEkYYkHXMhjDLNyyDyZSQDYczfeL9cbl9cms8sBm9Y8+Z9desA79GOBx2awfvE6x7JqJ+2b/XVInTIm+btUaL06WJv392hJ6bP9dPCrB3nVWVTT4pnKNj/9hzQA3DDTXShoB/ERNUHcvmPG4vZRi//wHSKVYF7VXmk3upEOkvcLMgnuln+7KCQIDI34SU9ecq413D81nOC5TUUT77OEtIuiN+5hMjxifwQ5U4SjHPU/Yl2sTVF8fO/Fqqs5FzZO2TLrRSnvRDIsOtzLy/u2XwUrSXJ4jIdfJ1iPSvseBrXwlv3o0/25hqymmGxvNjK/kRIMX/FvE2y5YfqaJF8s87yGX7p7vmok2BorZYVOlzMlCTFPogw/feU7MF8y6tpwD1aQhS+/O2G0aiqz81Kh90q5GFvMrQVAXXmohmYQvPogq9zNzY4gfQOmU+6o5qHu1SCwNtaeVJVGgo3Qpbp67xEgflHL9TI+TsEH+5yGKRABAcOniRRAbzdvs/lgGOKHjCNCnnU8z2iYZRBb+vEj7bjGt7RI4LhnMZy9diNeOz+ZDeOJ+pkCcc=
+  - secure: Q4MI62au3odBo8iOPYUKlja73PaGEaPEcanDTt08u5g5izsoJEdlg9jCoyX7Eycns4x8O7w0E5ucLoI/x+qnkto5tm+54Ckj3DBhbrEC7LcrlCbEitacrDCAn/xaJabXTLcFX0T78r3gvqW2+esLWVwmfO9O/bVbvhUIa3nL6w5hihUXEEpB1AKskeWoZ4HkKx2M08Xi8565lrpeQvE2dubVUrC3MtlrQxi4i1oTAZrhnCI5wXIu1zRRm84hZZ+0cty6Wg/TyprDjmqaE8kgY9QNdF3MICDAx6ZVFen5RpRNunXgOVDEqGSCeslpOoWPmVXxKwtZKaMFt6d1o46iWtIgoE4RL1CmV6maMbd5xU8XUpDZEEFsrXLMpdw2Rqg0sWPcpeeU8ZDu6gmSAESfrPq1OGGrnnr1EZDKU3Is+cHrPQSLm5T9tLRH/iDQw6OtCOLIO+bOofilhzxmn50QiqiJAK+6mU4gt/MAq+lh/MKBW9c7oXXfnrpRMN7LzO1gsP2E7R19x/GWOLYE0XJLElvsKHXhbQTmIXKy0+M/aGUuhR/uJ25Q0iZwcrJPiEfngU/sAvqqboQPArgxH7cF2fCJ2tKyhtHIc8hYu3Ak69PdFmMGgvFO6QYYRxJvJqvLvPJPBwBx5XLtzOo6nmpa2XSko/dDwMUjtAWI1ls+Ulo=
+  - secure: jws78UD6zTp6P2IRFGdxZv4zCIG0qwwYkIfSjJwgNs8fP+uGFSPfH8RZp+pgP5wXm5ahcoxOzVmj2OtDWkLsV+dfX6QfGw1mabGCAF0i8XsMTvXhDmK/W4JDhsbO4Bg9rWB60+9DhhTa3ia6YH9Tky9Fwvd+MYR8dMfkdTmNvzOIRmGWP9m7Vkd5svoMXzGjt8maFT5QShxgeOwrAs2kKJIOGzD6G/XHVa45aQjADpMgwXmSg8TsACm3m1y4F1seDXJlCU60K6nvfPq0L2lWVm7WyinUwmRsS9YU49+9fQqMXcWfO0NZ0Oe2+YNInQMPvFCXF3T6BgyLoXUD/pXTIrCTjPPoVjGrv2Kks1X69ue6Gbuv8Vr/P5mWm290jIggMMHCGVZKJIzeBcTGjYJQ/ujRiIKxwoRj4ZlykR6RhIjWtlsMTjmz6zJsVW+HHB/9g1ErTlPT2OoEaX1vT7bK4oWOyiWhCmC/gcw5rfr1eKduuimIbtMAkFWIW8UmUewFc4U6PMJxDeb0t4aji4OeI+NTXlrwHOxU286woQtXtuiTmmUOPRI4yIcMDyHoYFpIavwFLmI6pES3BG2yhcvsZvdqUjwSQKOJy8HmYzr0NugPvyQ1DmM5fpvhiBP3tOskTNtw+LFM3hL8ZAgF8WLgUPXFcPclCrHgWjEU+YmH1tU=
+  - secure: tkl8TohLT7wiA9DQ9h4p/A358PvpVRJ3qn4FRYXnbsq+jcFQ3Uh6x5UaNeMovjkZ1hPp02r3FxtjBISKV7PchHOKq233GmIOA61VCFHrQMIh3CdXBEYXr+/yR3q/MZOYTiiDzyXBVBveXg9W668HSr9R4Y/6LGiL9cl0kwQwaeAQ/91Qxy1mURdIdyVYpHNxwl8ztAeMOtkHl656xV7Titd2GJJnfT76RlOm481Jw7UbIzGFF0f9n+kB0LiaYaw9txlcqnfyo/hky+LCyt2H0Izx+Olql/oEhPy75ItwLPezqBacdMPtrS5S2jU1SaU6zBhl9WwN9AE1tWBkM4Sjw9+42P+/QPXi7Ztggv+UCeLp8d7M3fdN4vchdMDeA1myqoUedC6LK63kABBYCQnelW+l094nCoSfkpF9dQvnOQcHMh3HK+v0l7Vo9pTNo+yMr3NSGZu3XIfkbm7+XsD4bRCq9Dqvu9Ir/WJveCcW31AKCZyJhUQdOV+/cahutO9Ow84zSxgT0zoOLdRRY81ylXyWNRviuj2g78lzQmmqkyCcuVRAhUkkQO/dBVgHRrriTndSMgJ0o5nuDqAAubslRBxZoj7h/XKvq8/nfVIU7sV9JDuocrBYsFjaZJfzpXt+2rsC4cMsUqxWTN6FDXFJpb4Zvi2oFESu8/NfnH1IRnY=
 before_script:
-  - npm install
-  - npm run build:dev
+- npm install
+- npm run build:dev
 script:
-  - npm run dev:back & mocha
-  - whereis google-chrome-stable
-  - whereis ChromeDriver
-# - nvm ls-remote
-
-addons: # get google-chrome-stable
+- npm run dev:back & mocha
+- whereis google-chrome-stable
+- whereis ChromeDriver
+addons:
   chrome: stable
-
-install: # Install ChromeDriver (64bits; replace 64 with 32 for 32bits).
-  - wget -N http://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip -P ~/
-  - unzip ~/chromedriver_linux64.zip -d ~/
-  - rm ~/chromedriver_linux64.zip
-  - sudo mv -f ~/chromedriver /usr/local/share/
-  - sudo chmod +x /usr/local/share/chromedriver
-  - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
-  - npm install -g mocha
-  - npm install -g chai
-  - npm install -g chai-as-promised
-  - npm install -g selenium-webdriver
-  - npm install -g geckodriver
+install:
+- wget -N http://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip
+  -P ~/
+- unzip ~/chromedriver_linux64.zip -d ~/
+- rm ~/chromedriver_linux64.zip
+- sudo mv -f ~/chromedriver /usr/local/share/
+- sudo chmod +x /usr/local/share/chromedriver
+- sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+- npm install -g mocha
+- npm install -g chai
+- npm install -g chai-as-promised
+- npm install -g selenium-webdriver
+- npm install -g geckodriver
+- npm install -g nodemon
