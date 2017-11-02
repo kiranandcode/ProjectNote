@@ -1,6 +1,6 @@
 module.exports = (env) => {
     const passport = require('passport');
-    const LocalStrategy = require('./localstrategy');
+    const LocalStrategy = require('./localStrategy');
     const GoogleStrategy = require('./googleStrategy')(env);
     const User = require('../db/models/user');
 
