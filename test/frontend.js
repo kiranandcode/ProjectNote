@@ -54,8 +54,11 @@ describe("Project Note Webpage", () => {
                 driver.get(websiteURL).then(() => {
                     driver.wait(until.elementIsVisible(driver.findElement(By.xpath('//a[contains(text(), "Login")]')))).then(() => {
                         driver.findElement(By.xpath('//a[contains(text(), "Login")]')).click().then(() => {
-                            driver.findElement(By.xpath('//*[@id="formHorizontalPassword"]')).sendKeys("password").then(() => {
-                                driver.findElement(By.xpath('//*[@id="formHorizontalPassword"]')).getAttribute("value").should.eventually.equal("password").notify(done);
+                            driver.findElement(By.xpath('//*[@id="formHorizontalPassword"]')).then((elem) => {
+                                driver.executeScript("arguments[0].setAttribute('value', 'password')", elem).then(() => {
+                                    driver.findElement(By.xpath('//*[@id="formHorizontalPassword"]')).getAttribute("value").should.eventually.equal("password").notify(done);
+                                })
+
                             })
                         })
                     });
@@ -68,13 +71,19 @@ describe("Project Note Webpage", () => {
                 driver.get(websiteURL).then(() => {
                     driver.wait(until.elementIsVisible(driver.findElement(By.xpath('//a[contains(text(), "Login")]')))).then(() => {
                         driver.findElement(By.xpath('//a[contains(text(), "Login")]')).click().then(() => {
-                            driver.findElement(By.xpath('//*[@id="formHorizontalPassword"]')).sendKeys("dhen").then(() => {
-                                driver.findElement(By.xpath('//*[@id="formHorizontalEmail"]')).sendKeys("alex").then(() => {
-                                    driver.findElement(By.xpath('//*[@id="root"]/div/div/div/form/div[3]/div/button')).click().then(() => {
-                                        driver.getCurrentUrl().should.eventually.equal(websiteURL).notify(done);
+                            driver.findElement(By.xpath('//*[@id="formHorizontalPassword"]')).then((elem) => {
+                                driver.executeScript("arguments[0].setAttribute('value', 'dhen')", elem).then(() => {
+                                    driver.findElement(By.xpath('//*[@id="formHorizontalEmail"]')).then((elem2) => {
+                                        driver.executeScript("arguments[0].setAttribute('value', 'alex')", elem2).then(() => {
+                                            driver.findElement(By.xpath('//*[@id="root"]/div/div/div/form/div[3]/div/button')).click().then(() => {
+                                                driver.getCurrentUrl().should.eventually.equal(websiteURL).notify(done);
+                                            })
+                                        })
+
                                     })
                                 })
-                            })
+
+                            });
                         })
                     });
                 })
