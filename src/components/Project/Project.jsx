@@ -181,9 +181,9 @@ class Project extends Component {
                                 )
                             }
 
-                            <ul style={{ listStyle: 'none' }}>
+                            <ul style={{ listStyle: 'none', alignContent:"center" }}>
                                 {this.state.posts.map(post => (
-                                    <li className="posts">
+                                    <li className="posts" >
                                         <Panel bsStyle="info" header={<p>{post.person.local.username + "  -  "} <Badge>{moment(post.date).format("LLLL")}</Badge> </p>}>
                                             <p>{post.message}</p>
                                         </Panel>

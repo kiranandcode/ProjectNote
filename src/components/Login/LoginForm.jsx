@@ -56,18 +56,6 @@ class LoginForm extends Component {
 
 
     render() {
-        const CustomComponent = React.createClass({
-            render() {
-                return (
-                    <li
-                        className="list-group-item"
-                        onClick={() => { }}
-                    >
-                        {this.props.children}
-                    </li>
-                );
-            },
-        });
 
         if (this.state.redirectTo) {
             return (<Redirect to={{ pathname: this.state.redirectTo }} />);
