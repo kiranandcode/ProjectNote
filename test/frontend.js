@@ -20,17 +20,17 @@ let websiteURL = "http://localhost:10001/";
 var assert = require('assert');
 
 
-describe("Project Note Webpage", () => {
-    describe("Home page", () => {
-        describe("Title", () => {
-            it("should equal Project Note", function (done) {
+describe("The Project Note webpage", () => {
+    describe("The Home page", () => {
+        describe("The page title", () => {
+            it("should be Project Note", function (done) {
                 this.timeout(5000);
                 driver.get(websiteURL).then(() => {
                     driver.getTitle().should.eventually.equal("Project Note").notify(done);
                 })
             })
         })
-        describe("Login", () => {
+        describe("The login button", () => {
             it("should be visible", function (done) {
                 this.timeout(5000);
                 driver.get(websiteURL).then(() => {
@@ -38,7 +38,7 @@ describe("Project Note Webpage", () => {
                 })
             })
         })
-        describe("Signup", () => {
+        describe("The signup button", () => {
             it("should be visible", function (done) {
                 this.timeout(5000);
                 driver.get(websiteURL).then(() => {
@@ -47,26 +47,26 @@ describe("Project Note Webpage", () => {
             })
         })
     })
-    describe("Login page", () => {
-        describe("Login", () => {
-            it("should be able to type password", function (done) {
-                this.timeout(5000);
-                driver.get(websiteURL).then(() => {
-                    driver.wait(until.elementIsVisible(driver.findElement(By.xpath('//a[contains(text(), "Login")]')))).then(() => {
-                        driver.findElement(By.xpath('//a[contains(text(), "Login")]')).click().then(() => {
-                            driver.findElement(By.xpath('//*[@id="formHorizontalPassword"]')).then((elem) => {
-                                driver.executeScript("arguments[0].setAttribute('value', 'password')", elem).then(() => {
-                                    driver.findElement(By.xpath('//*[@id="formHorizontalPassword"]')).getAttribute("value").should.eventually.equal("password").notify(done);
-                                })
+    describe("The Login page", () => {
+        // describe("Login", () => {
+        //     it("should be able to type password", function (done) {
+        //         this.timeout(5000);
+        //         driver.get(websiteURL).then(() => {
+        //             driver.wait(until.elementIsVisible(driver.findElement(By.xpath('//a[contains(text(), "Login")]')))).then(() => {
+        //                 driver.findElement(By.xpath('//a[contains(text(), "Login")]')).click().then(() => {
+        //                     driver.findElement(By.xpath('//*[@id="formHorizontalPassword"]')).then((elem) => {
+        //                         driver.executeScript("arguments[0].setAttribute('value', 'password')", elem).then(() => {
+        //                             driver.findElement(By.xpath('//*[@id="formHorizontalPassword"]')).getAttribute("value").should.eventually.equal("password").notify(done);
+        //                         })
 
-                            })
-                        })
-                    });
-                })
-            })
-        })
-        describe("Login", () => {
-            it("url should be websiteurl", function (done) {
+        //                     })
+        //                 })
+        //             });
+        //         })
+        //     })
+        // })
+        describe("The login process", () => {
+            it("should redirect to root/ after logging in", function (done) {
                 this.timeout(5000);
                 driver.get(websiteURL).then(() => {
                     driver.wait(until.elementIsVisible(driver.findElement(By.xpath('//a[contains(text(), "Login")]')))).then(() => {
