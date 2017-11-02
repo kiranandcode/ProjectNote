@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "react-scripts test --env=jsdom",
-    "start": "export NODE_ENV=\"production\" && node server/server.js",
+    "start": "forever -c \"nodemon --exitcrash\" ./server/server.js",
     "build": "react-scripts build",
     "build:dev": "rimraf ./build/static/ && react-scripts build",
     "eject": "react-scripts eject",
