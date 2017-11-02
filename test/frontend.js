@@ -14,6 +14,7 @@ chromeOptions.setChromeBinaryPath("/usr/bin/google-chrome-stable").addArguments(
 let driver = new webdriver.Builder().forBrowser("chrome").setChromeOptions(chromeOptions).build();
 
 
+// using port 10001 for testing
 let websiteURL = "http://localhost:10001/";
 
 var assert = require('assert');
