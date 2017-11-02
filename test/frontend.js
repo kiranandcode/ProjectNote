@@ -7,7 +7,12 @@ chai.should();
 let webdriver = require("selenium-webdriver");
 let By = webdriver.By;
 let until = webdriver.until;
-let driver = new webdriver.Builder().forBrowser("chrome").build();
+let chromeOptions = new (require("selenium-webdriver/chrome").Options)();
+chromeOptions.setChromeBinaryPath("/usr/bin/google-chrome-stable").addArguments("--headless").addArguments("--disable-gpu");
+// let driver = new webdriver.Builder().forBrowser("chrome").build();
+// chromeOptions.addArguments("--headless").addArguments("--disable-gpu");
+let driver = new webdriver.Builder().forBrowser("chrome").setChromeOptions(chromeOptions).build();
+
 
 let websiteURL = "http://localhost:10001/";
 
@@ -78,17 +83,3 @@ describe("Project Note Webpage", () => {
 })
 
 
-/*
-// Home Page
-    // Describe title
-        - shoudl 
-    // Describe login
-        - should be visisble
-    // Describe signup 
-        - should be
-
-// Login page
-    // Describe login
-        - should be able to type in password
-        - on logging in, url should be websiteurl
-        */

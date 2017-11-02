@@ -4,7 +4,7 @@
   "description": "A note taking application made as part of UCL's 3rd Scenario Week",
   "main": "server.js",
   "scripts": {
-    "test": "react-scripts test --env=jsdom",
+    "test": "mocha",
     "start": "forever -c \"nodemon --exitcrash\" ./server/server.js",
     "build": "react-scripts build",
     "build:dev": "rimraf ./build/static/ && react-scripts build",
