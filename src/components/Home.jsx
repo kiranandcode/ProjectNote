@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import env from '../env';
 
-import {ListGroup, ListGroupItem, Badge, Glyphicon} from 'react-bootstrap';
+import { ListGroup, ListGroupItem, Badge, Glyphicon } from 'react-bootstrap';
+import { Card, CardBody, CardTitle, Button, CardFooter } from 'reactstrap';
 
 class Home extends Component {
     constructor(props) {
@@ -54,19 +55,32 @@ class Home extends Component {
                     <h3>Active Projects</h3>
                     <ListGroup>
                         {this.state.projects.map(project => (
-                            <ListGroupItem>
-                                <Link to={"/project/view/" + project._id}>
-                                    <p><strong>{project.name}</strong>   <Badge>{project.people.length} <Glyphicon glyph="user"/></Badge></p>
-                                </Link>
+                            <ListGroupItem style={{ width: "200px", height: "200px", marginRight: "20px", marginBottom: "20px", float: "left" }}>
+                                <Card>
+                                    <CardBody>
+                                        <CardTitle><strong>{project.name}</strong></CardTitle>
+                                        <Badge>{project.people.length} <Glyphicon glyph="user" /> contributors</Badge>
+
+                                        <Link style={{position: "relative", top: "65px"}} to={"/project/view/" + project._id}>
+                                            <Button style={{backgroundColor:"#3b80ef", color:"white"}}>View Project</Button>
+                                        </Link>
+
+                                    </CardBody>
+
+                                </Card>
+
                             </ListGroupItem>
+
                         ))}
-                        <ListGroupItem>
-                            <Link to="/project/new">
-                                <Glyphicon glyph="plus"/> Create new project
-                            </Link>
-                        </ListGroupItem>
                     </ListGroup>
-                </div>
+
+                    <Link to="/project/new" >
+                        <Button style={{ width: "200px", height: "50px", backgroundColor:"#3b80ef", color:"white", position:"fixed", bottom:"40px", left:"150px"}}>
+                            <p><Glyphicon glyph="plus" /> Create new project</p>
+                        </Button>
+                    </Link>
+                </div >
+
             );
             // TOOD add functionality to create Project
         } else {
