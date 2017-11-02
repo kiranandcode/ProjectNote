@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - 0.8
+  - 0.16.1
 env:
 - [
     {secure: ""},
@@ -23,8 +23,8 @@ install: # Install ChromeDriver (64bits; replace 64 with 32 for 32bits).
   - sudo mv -f ~/chromedriver /usr/local/share/
   - sudo chmod +x /usr/local/share/chromedriver
   - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
-  - npm install -g mocha
-  - npm install -g chai
-  - npm install -g chai-as-promised
-  - npm install -g selenium-webdriver
-  - npm install -g geckodriver
+  # - npm install -g mocha
+  # - npm install -g chai
+  # - npm install -g chai-as-promised
+  # - npm install -g selenium-webdriver
+  # - npm install -g geckodriver
