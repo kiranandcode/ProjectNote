@@ -5,7 +5,7 @@ before_script:
 - npm install
 - npm run build:dev
 script:
-- npm run dev:back & mocha
+- npm run dev:back & sleep 20; mocha
 - whereis google-chrome-stable
 - whereis ChromeDriver
 addons:
