@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import env from '../../env';
-import Dialog from 'react-dialog';
-import { Button, Panel, Glyphicon, ListGroup, ListGroupItem, FormControl, FormGroup, ControlLabel, Form, Col, Grid, Row } from 'react-bootstrap';
+import { Button,  Glyphicon, ListGroup, ListGroupItem, FormControl, FormGroup, ControlLabel, Form, Col, Grid, Row } from 'react-bootstrap';
 import { DebounceInput } from 'react-debounce-input';
 
 class Manage extends Component {
@@ -153,7 +152,6 @@ class Manage extends Component {
                         <h3>Project team members</h3>
                         <ListGroup>
                             {this.state.users.map(user => {
-                                let boundDeleteUser = this.deleteUser.bind();
                                 let id = (() => { return user._id })();
                                 return (
                                     <ListGroupItem>

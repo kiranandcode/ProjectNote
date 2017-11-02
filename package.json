@@ -4,7 +4,7 @@
   "description": "A note taking application made as part of UCL's 3rd Scenario Week",
   "main": "server.js",
   "scripts": {
-    "test": "react-scripts test --env=jsdom",
+    "test": "mocha",
     "start": "forever -c \"nodemon --exitcrash\" ./server/server.js",
     "build": "react-scripts build",
     "build:dev": "rimraf ./build/static/ && react-scripts build",
@@ -44,10 +44,15 @@
     "reactstrap": "^5.0.0-alpha.3"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
     "concurrently": "^3.5.0",
-    "react-debounce-input": "^3.1.0",
+    "geckodriver": "^1.9.0",
+    "mocha": "^4.0.1",
     "moment": "^2.19.1",
+    "react-debounce-input": "^3.1.0",
     "react-scripts": "1.0.7",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "selenium-webdriver": "^3.6.0"
   }
 }

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import env from '../../env';
-import Dialog from 'react-dialog';
 import { Button, Panel, Badge, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import moment from 'moment';
 
