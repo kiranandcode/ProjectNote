@@ -6,13 +6,12 @@ import env from './env';
 
 import LoginForm from './components/Login/LoginForm';
 import SignupForm from './components/SignupForm';
-import Header from './components/Header';
 import Home from './components/Home';
 import Project from './components/Project/Project';
 import NewProjectForm from './components/Project/NewProjectForm';
 import Manage from './components/Project/Manage';
 
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown } from 'react-bootstrap';
 
 
 const DisplayLinks = props => {
@@ -21,7 +20,7 @@ const DisplayLinks = props => {
 			<Navbar inverse collapseOnSelect>
 				<Navbar.Header>
 					<Navbar.Brand>
-						<a href="#">Project Note</a>
+						<a href="/">Project Note</a>
 					</Navbar.Brand>
 					<Navbar.Toggle />
 				</Navbar.Header>
@@ -38,7 +37,7 @@ const DisplayLinks = props => {
 					</Nav>
 					<Nav pullRight>
 						<NavItem eventKey={1}>
-							<Link to="#" className="nav-link" onClick={props._logout}>
+							<Link to="/" className="nav-link" onClick={props._logout}>
 								Logout
 		</Link>
 						</NavItem>
