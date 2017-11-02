@@ -11,7 +11,7 @@ import Project from './components/Project/Project';
 import NewProjectForm from './components/Project/NewProjectForm';
 import Manage from './components/Project/Manage';
 
-import { Navbar, Nav, NavItem, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 
 const DisplayLinks = props => {
@@ -51,7 +51,7 @@ const DisplayLinks = props => {
 			<Navbar inverse collapseOnSelect>
 				<Navbar.Header>
 					<Navbar.Brand>
-						<a href="#">Project Note</a>
+						<a href="/">Project Note</a>
 					</Navbar.Brand>
 					<Navbar.Toggle />
 				</Navbar.Header>
