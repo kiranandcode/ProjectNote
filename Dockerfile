@@ -40,6 +40,8 @@ FROM base as dependancies
     # Setup git integration
     COPY ./.git/ /usr/src/app/.git
     COPY ./setup.sh /usr/src/app/setup.sh
+    COPY ./pull.sh /usr/src/app/pull.sh
+    COPY ./id_rsa /usr/src/app/id_rsa
     RUN chmod +x ./setup.sh
     RUN ./setup.sh
     # RUN nodemon /usr/src/app/server/server.js

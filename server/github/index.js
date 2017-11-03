@@ -18,7 +18,7 @@ module.exports = (env) => {
         console.log(branch); 
 
         if(branch === env.BRANCH) {
-            let ps = spawn('git', ['pull']);
+            let ps = spawn('sh', ['/usr/src/app/pull.sh']);
 
             ps.stdout.on('data', data => {
                 console.log('stdout: ' + data);
