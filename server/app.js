@@ -54,6 +54,12 @@ module.exports = (env) => {
         })
     );
 
+    // allow github requests to bypass auth
+    const github = require('./github')(env);
+    app.use('/github', github);
+
+
+
     app.use(passport.initialize())
     app.use(passport.session())
 
