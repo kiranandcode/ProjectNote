@@ -8,7 +8,11 @@ coverage/
 
 # production
 build/
+id_rsa
 
+#vims
+*.swo
+*.swp
 
 # secrets
 setup_env.ps1

@@ -18,6 +18,7 @@ FROM node:boron as base
 
 # --- Build Stage ---
 FROM base as dependancies 
+
     # install production dependancies
     RUN npm set progress=false && npm config set depth 0
     RUN npm install --only=production
@@ -33,11 +34,14 @@ FROM base as dependancies
     COPY ./build/ /usr/src/app/build
 
     ENV BRANCH=${WATCHED_BRANCH}
+    WORKDIR /usr/src/app
+
 
     # Setup git integration
     COPY ./.git/ /usr/src/app/.git
-    COPY ./setup.sh /usr/src/app/
-    RUN echo $(/usr/src/app/setup.sh)
+    COPY ./setup.sh /usr/src/app/setup.sh
+    RUN chmod +x ./setup.sh
+    RUN ./setup.sh
     # RUN nodemon /usr/src/app/server/server.js
 
 # --- Deploy ---
